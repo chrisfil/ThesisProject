@@ -12,52 +12,16 @@ from dcase_models.data.dataset_base import Dataset
 logging.getLogger('sox').setLevel(logging.ERROR)
 
 
+
 class MUSDB18Mixtures (Dataset):
 
-	def __init__(self, dataset_path):
-	        super().__init__(dataset_path)
-
-	def build(self):
-
-		self.audio_path = self.dataset_path
-		self.fold_list = ["train", "test"]
-		self.label_list = ["vocals", "no_vocals"]
-		self.ann_label_list = ["vocals\t\n", "no_vocals\t\n"]
-		self.file_lists = {}
-
-	def generate_file_lists(self):
-		for fold in self.fold_list:
-			audio_folder = os.path.join(self.audio_path, fold)
-			self.file_lists[fold] = list_wav_files(audio_folder)
-
-		self.file_to_classes = {}
-
-		for dirpath, foldernames, filenames in os.walk(self.audio_path):
-			for filename in filenames:
-				if filename.endswith('.wav'):
-					filepath = dirpath + '/' + filename
-					if "_vocals_" in filename:
-						self.file_to_classes[filepath] = 'vocals'
-					if "_novocals_" in filename:
-						self.file_to_classes[filepath] = 'no_vocals'
-
-	def get_annotations(self, file_name, features, time_resolution):
-		y = np.zeros((len(features), len(self.label_list)))
-		class_name =  self.file_to_classes[file_name]
-		class_ix = self.label_list.index(class_name)
-		y[:, class_ix] = 1
-		return y
-
-
-class MUSDB18Mixtures2 (Dataset):
-
     def __init__(self, dataset_path):
             super().__init__(dataset_path)
 
     def build(self):
 
         self.audio_path = self.dataset_path
-        self.fold_list = ["train", "validate", "test"]
+        self.fold_list = ["train", "test"]
         self.label_list = ["vocals", "no_vocals"]
         self.ann_label_list = ["vocals\t\n", "no_vocals\t\n"]
         self.file_lists = {}
@@ -85,78 +49,6 @@ class MUSDB18Mixtures2 (Dataset):
         y[:, class_ix] = 1
         return y
 
-class MUSDB18Mixtures3 (Dataset):
-
-    def __init__(self, dataset_path):
-            super().__init__(dataset_path)
-
-    def build(self):
-
-        self.audio_path = self.dataset_path
-        self.fold_list = ["train", "validate", "test"]
-        self.label_list = ["vocals", "no_vocals"]
-        self.ann_label_list = ["vocals\t\n", "no_vocals\t\n"]
-        self.file_lists = {}
-
-    def generate_file_lists(self):
-        for fold in self.fold_list:
-            audio_folder = os.path.join(self.audio_path, fold)
-            self.file_lists[fold] = list_wav_files(audio_folder)
-
-        self.file_to_classes = {}
-
-        for dirpath, foldernames, filenames in os.walk(self.audio_path):
-            for filename in filenames:
-                if filename.endswith('.wav'):
-                    filepath = dirpath + '/' + filename
-                    if "_vocals_" in filename:
-                        self.file_to_classes[filepath] = 'vocals'
-                    if "_novocals_" in filename:
-                        self.file_to_classes[filepath] = 'no_vocals'
-
-    def get_annotations(self, file_name, features, time_resolution):
-        y = np.zeros((len(features), len(self.label_list)))
-        class_name =  self.file_to_classes[file_name]
-        class_ix = self.label_list.index(class_name)
-        y[:, class_ix] = 1
-        return y
-
-
-class Mixtures (Dataset):
-
-	def __init__(self, dataset_path):
-	        super().__init__(dataset_path)
-
-	def build(self):
-
-		self.audio_path = self.dataset_path
-		self.fold_list = ["train", "test"]
-		self.label_list = ["vocals", "no_vocals"]
-		self.ann_label_list = ["vocals\t\n", "no_vocals\t\n"]
-		self.file_lists = {}
-
-	def generate_file_lists(self):
-		for fold in self.fold_list:
-			audio_folder = os.path.join(self.audio_path, fold)
-			self.file_lists[fold] = list_wav_files(audio_folder)
-
-		self.file_to_classes = {}
-
-		for dirpath, foldernames, filenames in os.walk(self.audio_path):
-			for filename in filenames:
-				if filename.endswith('.wav'):
-					filepath = dirpath + '/' + filename
-					if "with_vocals" in filename:
-						self.file_to_classes[filepath] = 'vocals'
-					if "no_vocals" in filename:
-						self.file_to_classes[filepath] = 'no_vocals'
-
-	def get_annotations(self, file_name, features, time_resolution):
-		y = np.zeros((len(features), len(self.label_list)))
-		class_name =  self.file_to_classes[file_name]
-		class_ix = self.label_list.index(class_name)
-		y[:, class_ix] = 1
-		return y
 
 class Slakh (Dataset):
 
