@@ -1,0 +1,58 @@
+{
+    "features" : {
+        "MelSpectrogram" : {
+            "sequence_time": 2.99, 
+            "sequence_hop_time": 1.495,
+            "audio_hop":1024,
+            "audio_win":4096,
+            "sr": 44100,
+            "mel_bands": 256,
+            "n_fft":4096,
+            "pad_mode" : "constant"
+        },
+        "STFT_Phase" : {
+            "sequence_time": 2.99, 
+            "sequence_hop_time": 1.495,
+            "audio_hop":1024,
+            "audio_win":4096,
+            "sr": 44100,
+            "mel_bands": 256,
+            "n_fft":4096,
+            "pad_mode" : "constant"
+        }
+    },
+
+    "train" : {
+        "early_stopping" : 100,
+        "epochs" : 50,
+        "considered_improvement" : 0.0,
+        "learning_rate" : 0.001,
+        "batch_size" : 96,
+        "verbose" : 1,
+        "optimizer" : "Adam"
+    },
+
+    "models" : {
+        "AttProtos" : {
+            "normalizer" : "minmax",
+            "model_arguments" : {
+                "filter_size_cnn" : [5,5],
+                "distance" : "euclidean",
+                "use_weighted_sum": 1,
+                "n_prototypes" : 15
+            },
+            "train_arguments": {
+                "loss_weights" : [10,5,0,5],
+                "init_last_layer" : 0
+            }          
+        }
+    },
+
+    "datasets" : {
+        "MUSDB18Mixtures" : {
+            "dataset_path" : "/home/christosf/AttProtos/datasets/MUSDB18Mixtures",
+            "evaluation_mode" : "train-test"
+        }
+    }
+
+}
