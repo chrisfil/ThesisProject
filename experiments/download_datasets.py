@@ -6,7 +6,7 @@ import numpy as np
 sys.path.append('../')
 
 # Datasets
-from apnet.datasets import MedleySolosDb, GoogleSpeechCommands, IRMAS, MUSDB18, MUSDB18Mixtures2, MUSDB18Mixtures3
+from apnet.datasets import MedleySolosDb, GoogleSpeechCommands, IRMAS, MUSDB18, MUSDB18Mixtures
 from dcase_models.data.datasets import URBAN_SED, UrbanSound8k
 
 available_datasets = {
