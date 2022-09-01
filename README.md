@@ -4,11 +4,14 @@ Code and material used for my thesis project, "Singing voice separation using In
 The notebooks were used for the experiments.
 The python scripts in experiment folder are used for training, evaluation, editing, separation, reconstructing the estimated audio, concatanating audio, etc.
 
+Best weights and training log can be found in the two experiment folders "ThesisProject/experiments/MUSDB18Mixtures/AttProtos/test/" and "ThesisProject/experiments/MUSDB18Mixtures/AttProtos2/test/".
+
 The anaconda environment is also provided in env.yaml, with all the dependencies.
+
 
 
 APNet and AttProtos folders include the code from these works with some minor modifications for thesis purposes:
 
-Zinemanas, P., Rocamora, M., Fonseca, E., Font, F. & Serra, X. Toward interpretable polyphonic sound event detection with attention maps based on local prototypes. In Proceedings of the Workshop on Detection and Classification of Acoustic Scenes and Events (DCASE) (2021). 
+1. Zinemanas, P., Rocamora, M., Fonseca, E., Font, F. & Serra, X. Toward interpretable polyphonic sound event detection with attention maps based on local prototypes. In Proceedings of the Workshop on Detection and Classification of Acoustic Scenes and Events (DCASE) (2021). 
 
-Zinemanas, P., Rocamora, M., Miron, M., Font, F. and Serra, X. An Interpretable Deep Learning Model for Automatic Sound Classification. Electronics, 10(7), 850 (2021).
+2. Zinemanas, P., Rocamora, M., Miron, M., Font, F. and Serra, X. An Interpretable Deep Learning Model for Automatic Sound Classification. Electronics, 10(7), 850 (2021).
